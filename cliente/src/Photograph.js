@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './Photograph.css';
 
 class Photograph extends Component {
     constructor(props){

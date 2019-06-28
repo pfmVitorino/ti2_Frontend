@@ -2,3 +2,19 @@
 
     background-color: aquamarine
 }
+
+.PaginaInicial-Login{
+
+    text-align: left;
+    width: 125px;
+    padding: 37px 50px 50px 40px;
+    font-size: 16px;
+    border-top: 5px solid #010b0e;
+    -webkit-border-radius: 0 0  5px 5px;
+    border-radius: 0 0  5px 5px;
+    border: 5px solid black;
+    background-image: url('./ipt.jpg.jpg');
+    background-size:25%;
+    
+ 
+}

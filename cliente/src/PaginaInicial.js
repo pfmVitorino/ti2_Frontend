@@ -15,7 +15,8 @@ class PaginaInicial extends Component {
             ShowImage: {},
             text: '',
             Username: '',
-            Password:''
+            Password:'',
+            isauthenticated : false
 
         }
         // sempre que clik correr o this tem de fazer referencia ao this da pagina principal
@@ -106,6 +107,19 @@ class PaginaInicial extends Component {
         "password": this.state.Password
        }
        let response = await axios.post('https://ipt-ti2-iptgram.azurewebsites.net/api/account/login',obj);
+       
+        // caso a autenticação tenha sucesso
+     if (response.status === 200){
+
+        this.setState({
+            Username: '',
+            Password:'',
+            isauthenticated : true
+            
+        })
+     }
+    
+
 
        console.log(response);
 
@@ -122,17 +136,23 @@ render(){
         <button type="submit">🔍</button>
 
         </form>
-
+        {
+         (this.state.isauthenticated ) ?
+         
+         <button onClick={this.state.logout}>Logout</button>
+        :
         <form className="PaginaInicial-Login" onSubmit={this.login}>
         <input type="text" name="Username" onChange={this.Change} value={this.state.Username}/>
         <input type="password" name ="Password" onChange={this.Change} value={this.state.Password}/>
         <button type= "submit">Login</button>
         </form>
+       
+    }
             {
                 this.state.posts.map(function (p) {
                     // retorna todos os elementos 
                     return ([
-                        <h1>{"Title : "}{p.caption}</h1>,
+                        <h1>{p.caption}</h1>,
                         <Photograph id={p.id} Click={this.Click} />,
                         <h2>{"Username : "}{p.user.name}</h2>,
                         <h2>{"Data : "}{p.postedAt.substring(0, p.postedAt.indexOf("T"))}</h2>,
