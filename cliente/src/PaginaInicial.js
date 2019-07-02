@@ -111,7 +111,13 @@ class PaginaInicial extends Component {
 
 
         }
-        let response = await axios.post('https://ipt-ti2-iptgram.azurewebsites.net/api/account/login', obj);
+        let response = await axios.post('https://ipt-ti2-iptgram.azurewebsites.net/api/account/login', obj, {
+            withCredentials: true,
+            crossdomain: true,
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
 
         // caso a autenticação tenha sucesso
         if (response.status === 200) {
@@ -140,8 +146,15 @@ class PaginaInicial extends Component {
 
 
         }
-        let response = await axios.post('https://ipt-ti2-iptgram.azurewebsites.net/api/account/logout', obj);
-
+        let response = await axios.post('https://ipt-ti2-iptgram.azurewebsites.net/api/account/logout', obj, {
+            withCredentials: true,
+            crossdomain: true,
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        this.setState({
+        isauthenticated : false })
     }
     // renderizar
     render() {
@@ -171,7 +184,7 @@ class PaginaInicial extends Component {
 
                             <h1>📷 IPTGRAM 📷</h1>
                             <h2>Pedro Vitorino 17902 </h2>
-                            <h2>Guilherme Silva ... </h2>
+                            <h2>Guilherme Silva 19113 </h2>
 
 
                         </center>

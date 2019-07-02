@@ -36,7 +36,7 @@ class Popup extends Component {
                                     <table width="280" cellspacing="1" cellpadding="3" border="5" bgcolor="white">
                                         <tr>
                                             <td>
-                                                <h4>{c.text}</h4>
+                                                <h4>{"📝"}{c.text}</h4>
                                             </td>
                                         </tr>
                                         <h4>{c.user.name}</h4>
