@@ -27,21 +27,16 @@ class PaginaInicial extends Component {
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
         this.MyCommentSub = this.MyCommentSub.bind(this);
+        this.PutLike= this.PutLike.bind(this);
     
 
     }
     async componentDidMount() {
-        let response = await axios.get('https://ipt-ti2-iptgram.azurewebsites.net/api/posts');
-        //console.log(response.data[0].caption);
+       this.getPosts();
+        
 
-        let postArray = response.data;
-
-
-        // mudar o estado do objecto
-        this.setState({
-            posts: postArray
-        });
-
+        
+ 
     }
     // funcao para filtar os dados
     async searchBy(evt) {
@@ -53,6 +48,20 @@ class PaginaInicial extends Component {
         this.setState({
             posts: postArray,
             text: ''
+        });
+
+    }
+
+    async getPosts(){
+        let response = await axios.get('https://ipt-ti2-iptgram.azurewebsites.net/api/posts');
+        
+
+        let postArray = response.data;
+
+
+        // mudar o estado do objecto
+        this.setState({
+            posts: postArray
         });
 
     }
@@ -178,6 +187,18 @@ class PaginaInicial extends Component {
 // fazer o pedido para os comentários ao post
        this.Click(idpost);
     }
+// função para meter like nos posts
+    async PutLike(idpost){
+
+        let response = await axios.post('https://ipt-ti2-iptgram.azurewebsites.net/api/posts/'+idpost+'/like',null,{
+        withCredentials : true,
+        crossdomain : true,
+        headers: {
+           "Content-Type": "application/json"
+    }});
+    //atualiza todos os posts da API
+    this.getPosts();
+}
     // renderizar
     render() {
 
@@ -235,7 +256,7 @@ class PaginaInicial extends Component {
                                     <h3>{p.caption}</h3>
                                     <Photograph id={p.id} Click={this.Click} />
                                     <h3>{"📅 "}{p.postedAt.substring(0, p.postedAt.indexOf("T"))}</h3>
-                                    <h3>{"👍 "}{p.likes}</h3>
+                                   <button onClick={()=>this.PutLike(p.id)}>{"👍 " +p.likes}</button>
                                 </div>
 
 
