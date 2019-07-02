@@ -4,7 +4,12 @@ import './popUp.css'
 class Popup extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            NewComment : ''
+        }
         this.popupClose = this.popupClose.bind(this);
+        this.MyCommentSub = this.MyCommentSub.bind(this);
+        this.MyComment = this.MyComment.bind(this);
 
     }
 
@@ -16,6 +21,20 @@ class Popup extends Component {
     }
 
 
+MyComment (evt){
+    this.setState ({
+        NewComment: evt .target.value
+    });
+}
+
+MyCommentSub (evt){
+    evt.preventDefault();
+    this.props.MyCommentSub(this.state.NewComment,this.props.idpost);
+    this.setState({
+        NewComment: ''
+    })
+}
+
 
     render() {
         return (
@@ -25,6 +44,7 @@ class Popup extends Component {
                 <h2>{"📅 "} {this.props.date.substring(0, this.props.date.indexOf("T"))}</h2>
                 <h2> {}{this.props.subtitle}</h2>
                 <h2>{"👍 "} {this.props.likes}</h2>
+               
 
                 {
                     this.props.comments.map(
@@ -41,7 +61,7 @@ class Popup extends Component {
                                         </tr>
                                         <h4>{c.user.name}</h4>
                                         <h4>{c.postedAt.substring(0, this.props.date.indexOf("T"))}</h4>
-
+                                       
                                     </table>
 
 
@@ -53,6 +73,9 @@ class Popup extends Component {
                         }.bind(this))
 
                 }
+                <form onSubmit = {this.MyCommentSub}> 
+                    <input type="text" value ={this.state.NewComment} onChange = {this.MyComment} placeholder="Write your comment..."/>
+                </form>
                 <button onClick={this.popupClose}>❌</button>
 
 

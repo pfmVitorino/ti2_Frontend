@@ -26,6 +26,8 @@ class PaginaInicial extends Component {
         this.Change = this.Change.bind(this);
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
+        this.MyCommentSub = this.MyCommentSub.bind(this);
+    
 
     }
     async componentDidMount() {
@@ -63,6 +65,7 @@ class PaginaInicial extends Component {
         let response = await axios.get(srt);
 
         let obj = {
+            idpost : id,
             image: "https://ipt-ti2-iptgram.azurewebsites.net/api/posts/" + id + "/image",
             user: response.data.user.name,
             date: response.data.postedAt,
@@ -156,6 +159,25 @@ class PaginaInicial extends Component {
         this.setState({
         isauthenticated : false })
     }
+
+     async MyCommentSub(comment,idpost){
+         let obj = {
+          "postId" : idpost,
+          "text" : comment
+         };
+
+         let response = await axios.post('https://ipt-ti2-iptgram.azurewebsites.net/api/comments',obj,{
+             withCredentials : true,
+             crossdomain : true,
+             headers: {
+                "Content-Type": "application/json"
+             }
+         })
+
+
+// fazer o pedido para os comentários ao post
+       this.Click(idpost);
+    }
     // renderizar
     render() {
 
@@ -236,6 +258,8 @@ class PaginaInicial extends Component {
                         likes={this.state.ShowImage.likes}
                         comments={this.state.ShowImage.comments}
                         popupClose={this.popupClose}
+                        MyCommentSub={this.MyCommentSub}
+                        idpost ={this.state.ShowImage.idpost}
                     />
                 }
 
