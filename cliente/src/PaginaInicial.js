@@ -51,7 +51,7 @@ class PaginaInicial extends Component {
         });
 
     }
-
+// vai buscar todos os posts
     async getPosts(){
         let response = await axios.get('https://ipt-ti2-iptgram.azurewebsites.net/api/posts');
         
@@ -246,9 +246,11 @@ class PaginaInicial extends Component {
 
                                 <div className="PaginaInicial-show">
                                     <form className="SearchBox" onSubmit={this.searchBy}>
+                                    <div className = "BoxForSearch">
                                         <input placeholder="Search..." name="text" onChange={this.Change} value={this.state.text} />
 
                                         <button type="submit">🔍</button>
+                                        </div>
 
                                     </form>
 
@@ -271,6 +273,7 @@ class PaginaInicial extends Component {
 
                 }
                 {
+                    (this.state.isauthenticated) &&
                     // as 2 coisas têm de ser verdade para ele renderizar o popup
                     this.state.ShowPopup && <Popup image={this.state.ShowImage.image}
                         user={this.state.ShowImage.user}
@@ -281,7 +284,7 @@ class PaginaInicial extends Component {
                         popupClose={this.popupClose}
                         MyCommentSub={this.MyCommentSub}
                         idpost ={this.state.ShowImage.idpost}
-                    />
+                      />
                 }
 
 

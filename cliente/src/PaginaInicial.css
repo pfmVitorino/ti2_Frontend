@@ -38,3 +38,9 @@
     transition: width 0.4s ease-in-out;
  
 }
+
+.BoxForSearch{
+    position: absolute;
+    top : 4%;
+    left : 42%;
+}
