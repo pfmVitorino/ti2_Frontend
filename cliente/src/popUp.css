@@ -56,7 +56,14 @@
               transform-origin: 50% 100%;
     }
   }
-  
+  .comment{
+
+   background-color: whitesmoke;
+   width: 20%;
+   height: 80%;
+   border: 1px solid black;
+   
+  }
   
   
   

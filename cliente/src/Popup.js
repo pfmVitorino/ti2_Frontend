@@ -71,10 +71,11 @@ MyCommentSub (evt){
                                 </center>
                             ]);
                         }.bind(this))
-
+                     // botão para fechar o popop
                 }
+                
                 <form onSubmit = {this.MyCommentSub}> 
-                    <input type="text" value ={this.state.NewComment} onChange = {this.MyComment} placeholder="Write your comment..."/>
+                    <input className="comment" type="text" value ={this.state.NewComment} onChange = {this.MyComment} placeholder="Write your comment..."/>
                 </form>
                 <button onClick={this.popupClose}>❌</button>
 
