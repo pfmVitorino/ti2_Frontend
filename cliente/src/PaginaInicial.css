@@ -29,13 +29,22 @@
     
     
     border-radius: 0 0  5px 5px;
-    border: 5px solid black;
+    border: 2px solid gray;
 
+}
+
+.PaginaInicial-Logout{
+    margin-bottom: 10px;
+}
+
+.PaginaInicial-show h2{
+    padding-top: 15px;
 }
 
 .SearchBox{
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
+    margin: 5px 0 5px 0;
  
 }
 

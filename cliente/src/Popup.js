@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './popUp.css'
 
+// classe resposável pela aparecimento do popup quando se clica na imagem
 class Popup extends Component {
     constructor(props) {
         super(props);
@@ -20,7 +21,7 @@ class Popup extends Component {
 
     }
 
-
+// criar um novo comentário
 MyComment (evt){
     this.setState ({
         NewComment: evt .target.value

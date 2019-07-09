@@ -38,6 +38,7 @@ class PaginaInicial extends Component {
         
  
     }
+    // axios.get vais buscar tudo o que está na API
     // funcao para filtar os dados
     async searchBy(evt) {
         evt.preventDefault()
@@ -210,7 +211,7 @@ class PaginaInicial extends Component {
                     (this.state.isauthenticated) ?
 
                         <form className="PaginaInicial-Logout" onSubmit={this.logout}>
-                            <button type="submit" >Logout</button>
+                            <button className="btn-logout" type="submit" >Logout</button>
                         </form>
                         :
 

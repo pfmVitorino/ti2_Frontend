@@ -1,1 +1,16 @@
 
+.Photograph {
+    display: flex;
+    width: 100%;
+    justify-content: center;    
+    
+  }
+.Photograph .photo {
+    width: 50vh;
+    border: 6px solid white;
+    box-shadow: 1px 0  black;
+    
+  }
+  .photo img{
+      width: 50vh;
+  }
